@@ -64,8 +64,6 @@ def apply_coupons(cart, coupons)
         hash_output[coupon_name][:clearance] = false
 
 
-
-
       end
     end
   end
