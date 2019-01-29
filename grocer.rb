@@ -47,19 +47,20 @@ def apply_coupons(cart, coupons)
 
     if cart_array.include?(coupon_name)
 
-      # TEST: hold original item's price in variable -
-      # FIND WHERE IT'S BEING OVERWRITTEN!! >:(
-      original_item_cost = hash_output[coupon_name][:price]
 
+      # new coupon-ated item
       new_item_name = coupon_name + " W/COUPON"
-      hash_output[new_item_name] = hash_output[coupon_name]
+      hash_output[new_item_name] = {}
+      hash_output[new_item_name][:count] = 1
+      hash_output[new_item_name][:price] = coupon_hash[:cost]
+      hash_output[new_item_name][:clearance] = true
 
       # original item
       hash_output[coupon_name][:count] -= coupon_hash[:num]
+      hash_output[new_item_name][:clearance] = true
 
-      # new coupon-ated item
-      hash_output[new_item_name][:count] = 1
-      hash_output[new_item_name][:price] = coupon_hash[:cost]
+      
+
 
       binding.pry
 
