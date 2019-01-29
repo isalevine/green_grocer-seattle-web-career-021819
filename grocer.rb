@@ -60,7 +60,6 @@ def apply_coupons(cart, coupons)
         hash_output[coupon_name][:count] -= coupon_hash[:num]
         hash_output[new_item_name][:clearance] = true
 
-        
       else
         hash_output[coupon_name][:clearance] = false
 
