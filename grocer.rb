@@ -46,22 +46,27 @@ def apply_coupons(cart, coupons)
     coupon_name = coupon_hash[:item]
 
     if cart_array.include?(coupon_name)
+
       # check if enough items are in cart to apply coupon
-      if hash_output[coupon_name][:count] >= coupon_hash[:num]
+      ##if hash_output[coupon_name][:count] >= coupon_hash[:num]
 
         # new coupon-ated item
         new_item_name = coupon_name + " W/COUPON"
         hash_output[new_item_name] = {}
         hash_output[new_item_name][:count] = 1
         hash_output[new_item_name][:price] = coupon_hash[:cost]
-        hash_output[new_item_name][:clearance] = true
 
+        if hash_output[coupon_name][:count] == 0
+          hash_output[new_item_name][:clearance] = true
+        elsif hash_output[coupon_name][:count] > 0
+          hash_output[new_item_name][:clearance] = false
+        
         # original item
         hash_output[coupon_name][:count] -= coupon_hash[:num]
         hash_output[new_item_name][:clearance] = true
 
-      else
-        hash_output[coupon_name][:clearance] = false
+      
+        
 
 
       end
